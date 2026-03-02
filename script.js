@@ -1,7 +1,9 @@
 async function searchCountry(countryName) {
+
+    const spinner = document.getElementById('loading-spinner');
     try {
         // Show loading spinner
-        document.getElementById('country-info').innerHTML = '<p>Loading...</p>';
+        spinner.style.display = 'block';
 
         // Fetch country data
         const response = await fetch(`https://restcountries.com/v3.1/name/${countryName}`);
@@ -38,7 +40,7 @@ async function searchCountry(countryName) {
        console.error(error.message);
     } finally {
         // Hide loading spinner
-        // The 'Loading...' text is replaced by the content in the Update DOM step
+        spinner.style.display = 'none';
     }
 }
 
